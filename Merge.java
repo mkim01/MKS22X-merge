@@ -41,19 +41,24 @@ public class Merge{
       l++;
       i++;
     }
+    System.out.println(Arrays.toString(data));
 
     return ;
-
 }
 
   public static void mergesort(int[] data, int lo, int hi){
-    // if (data.length <= 1){
+    if (lo >= hi){
       return ;
     }
+      int mid = (hi + lo) / 2;
+      mergesort(data, lo ,mid);
+      mergesort(data, mid + 1, hi);
+      merge(data, lo, mid, hi);
+  }
 
   public static void main(String[] args){
-    int[] test= {9,8,7,6,5,4,3,2,1,0,0,0,0,0,0};
-    merge(test,0,(0 + test.length - 1)/2, test.length - 1);
+    int[] test= {5,3,2,4,1};
+    mergesort(test,0, test.length-1);
   }
 
 }

@@ -1,37 +1,59 @@
 import java.util.*;
 public class Merge{
 
-  public static void mergesort(int[]data){
-    if (data.length <= 1){
-    return ;
-    }
+  public static void merge(int[]data, int lo, int mid, int hi){
+    int lsize = mid - lo + 1;
+    int rsize = hi - mid;
     //assign value to temp data set;
-    int mid = (data.length) / 2 ;
-    int[] lefthalf = new int[mid];
-    for (int i = 0; i < mid; i++){
-      lefthalf[i] = data[i];
+    int[] left = new int[lsize];
+    for (int i = 0; i < lsize; i++){
+      left[i] = data[i];
     }
-    int[] righthalf = new int[data.length - mid];
-    for (int i = 0; i < data.length - mid; i++){
-      righthalf[i] = data[mid + i];
+    int[] right = new int[rsize];
+    for (int i = 0; i < rsize; i++){
+      right[i] = data[rsize + i];
     }
-    System.out.println(Arrays.toString(lefthalf));
-    System.out.println(Arrays.toString(righthalf));
+    // System.out.println(Arrays.toString(left));
+    // System.out.println(Arrays.toString(right));
 
-    // for (int i = 0; i < data.length; i++){
-    //   if (lefthalf[i] < data[i]){
-    //     dholder = data[i];
-    //     hol
-    //   }
-    //   else if (righthalf[i] <
-    // }
+    int i = 0; //index of original data as you copy down
+    int r = 0; //right array index
+    int l = 0; //left array index
+    while (r < rsize && l < lsize){
+      if(right[r] <= left[l]){
+        data[i] = right[r];
+        r++;
+      }
+      else{
+        data[i] = left[l];
+        l++;
+      }
+      i++;
+    }
+    // if either of two arrays is filled out first then you copy the remaining elements of the other
+    while (r < rsize){
+      data[i] = right[r];
+      r++;
+      i++;
+    }
+    while(l < lsize){
+      data[i] = left[l];
+      l++;
+      i++;
+    }
 
     return ;
+
 }
 
+  public static void mergesort(int[] data, int lo, int hi){
+    // if (data.length <= 1){
+      return ;
+    }
+
   public static void main(String[] args){
-    int[] test= {9,8,7,6,5,4,3,2,1,0,0,0,0,0,0,0};
-    mergesort(test);
+    int[] test= {9,8,7,6,5,4,3,2,1,0,0,0,0,0,0};
+    merge(test,0,(0 + test.length - 1)/2, test.length - 1);
   }
 
 }

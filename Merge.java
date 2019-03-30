@@ -2,6 +2,7 @@ import java.util.*;
 public class Merge{
 
   public static void merge(int[]data, int lo, int mid, int hi){
+   //System.out.println(Arrays.toString(data));
     int lsize = mid - lo + 1;
     int rsize = hi - mid;
     //assign value to temp data set;
@@ -19,6 +20,7 @@ public class Merge{
     int i = 0; //index of original data as you copy down
     int r = 0; //right array index
     int l = 0; //left array index
+
     while (r < rsize && l < lsize){
       if(right[r] <= left[l]){
         data[i] = right[r];
@@ -41,8 +43,7 @@ public class Merge{
       l++;
       i++;
     }
-    System.out.println(Arrays.toString(data));
-
+    // System.out.println(Arrays.toString(data));
     return ;
 }
 
@@ -52,8 +53,21 @@ public class Merge{
     }
       int mid = (hi + lo) / 2;
       mergesort(data, lo ,mid);
-      mergesort(data, mid + 1, hi);
+
+      mergesort(data, mid, hi);
       merge(data, lo, mid, hi);
+  }
+
+  public static void insertionSort(int[] data, int lo, int hi){
+    for(int i = lo + 1; i <= hi; i++){
+      int current = data[i];
+      int j = i - 1;
+      while(j > lo && data[j] > current){
+        data[j + 1] = data[j];
+        j--;
+      }
+      data[j + 1] = current;
+    }
   }
 
   public static void main(String[] args){

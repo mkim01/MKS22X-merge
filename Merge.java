@@ -38,18 +38,21 @@ public class Merge{
     if (lo >= hi){
       return;
     }
-
+    if (hi -lo){
+      insertionSort(data, lo, hi);
+      return ;
+    }
       int mid = data.length/2;
      //System.out.println(Arrays.toString(data));
       int lsize = mid;
       int rsize = data.length - mid;
       //assign value to temp data set;
       int[] left = new int[lsize];
-      for (int i = 0; i < lsize; i++){
+      for (int i = 0; i < left.length; i++){
         left[i] = data[i];
       }
       int[] right = new int[rsize];
-      for (int i = 0; i < rsize; i++){
+      for (int i = 0; i < right.length; i++){
         right[i] = data[mid + i];
       }
       mergesort(left, 0, left.length-1);

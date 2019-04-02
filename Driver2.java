@@ -1,8 +1,6 @@
   import java.util.Arrays;
 
 public class Driver2{
-
-
  //Sort testing code
   private static final int INCREASE = 0;
   private static final int DECREASE = 1;
@@ -16,6 +14,18 @@ public class Driver2{
     if(i==SMALL_RANGE)return "Random with Few Values";
     return "Error categorizing array";
 
+  }
+
+  public static void insertionSort(int[] data, int lo, int hi){
+    for(int i = lo + 1; i <= hi; i++){
+      int current = data[i];
+      int j = i - 1;
+      while(j >= lo && data[j] > current){
+        data[j + 1] = data[j];
+        j--;
+      }
+      data[j + 1] = current;
+    }
   }
 
   private static int create(int min, int max){
@@ -63,12 +73,16 @@ public class Driver2{
     int [] start = makeArray(size,type);
     int [] result = Arrays.copyOf(start,start.length);
     Arrays.sort(result);
-
     long startTime = System.currentTimeMillis();
+    // insertionSort(start,0,start.length - 1);
+
     /*
      * Test your sort here //yoursort(start);
      * Add code to switch which sort is tested by changing one of the args!
      */
+
+    // mergesort(start);
+
     long elapsedTime = System.currentTimeMillis() - startTime;
     if(Arrays.equals(start,result)){
       System.out.println("PASS Case "+name(type)+"\t array, size:"+start.length+"\t"+elapsedTime/1000.0+"sec ");

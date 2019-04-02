@@ -81,7 +81,7 @@ public class Driver2{
      * Add code to switch which sort is tested by changing one of the args!
      */
 
-    // mergesort(start);
+    Merge.mergesort(start);
 
     long elapsedTime = System.currentTimeMillis() - startTime;
     if(Arrays.equals(start,result)){

@@ -38,7 +38,7 @@ public class Merge{
     if (lo >= hi){
       return;
     }
-    if (hi -lo){
+    if (hi -lo < 25){
       insertionSort(data, lo, hi);
       return ;
     }
@@ -68,7 +68,7 @@ public class Merge{
     for(int i = lo + 1; i <= hi; i++){
       int current = data[i];
       int j = i - 1;
-      while(j > lo && data[j] > current){
+      while(j >= lo && data[j] > current){
         data[j + 1] = data[j];
         j--;
       }
@@ -78,7 +78,12 @@ public class Merge{
 
   public static void main(String[] args){
     int[] test= {5,3,2,4,1};
-    mergesort(test);
+    int[] test2= {5,3,2,4,1};
+    // mergesort(test);
+    Arrays.sort(test);
+    System.out.println(Arrays.toString(test));
+    insertionSort(test2,0,test2.length - 1);
+    System.out.println(Arrays.toString(test2));
 
   }
 

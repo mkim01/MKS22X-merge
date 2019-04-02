@@ -53,9 +53,12 @@ public class Merge{
     }
       int mid = (hi + lo) / 2;
       mergesort(data, lo ,mid);
-
-      mergesort(data, mid, hi);
+      mergesort(data, mid + 1 , hi);
       merge(data, lo, mid, hi);
+  }
+
+  public static void mergesort(int[] data){
+    mergesort(data, 0, data.length - 1);
   }
 
   public static void insertionSort(int[] data, int lo, int hi){
@@ -73,6 +76,7 @@ public class Merge{
   public static void main(String[] args){
     int[] test= {5,3,2,4,1};
     mergesort(test,0, test.length-1);
+
   }
 
 }
